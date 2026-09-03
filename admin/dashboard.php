@@ -1,11 +1,9 @@
 <?php
 require "../auth/middleware.php";
 
-if ($currentUser['role'] !== 'admin') {
-    jsonResponse(["message" => "Access denied"], 403);
-}
+requireRole(['admin', 'penjual', 'pembeli']);
 
 jsonResponse([
-    "message" => "Welcome Admin",
+    "message" => "Selamat datang di Sistem Jual Beli Barang.",
     "user_id" => $currentUser['uid']
 ]);
