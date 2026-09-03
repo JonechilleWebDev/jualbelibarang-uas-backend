@@ -4,7 +4,7 @@ require "../config/database.php";
 require "../controllers/TransaksiController.php";
 
 // ADMIN ONLY
-requireRole(['admin']);
+requireRole(['admin', 'penjual', 'pembeli']);
 
 $db = (new Database())->connect();
 $controller = new TransaksiController($db);
