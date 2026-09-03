@@ -22,3 +22,11 @@ try {
 }
 
 $currentUser = (array) $decoded;
+function requireRole($allowedRoles)
+{
+    global $currentUser;
+
+    if (!in_array($currentUser['role'], $allowedRoles)) {
+        jsonResponse(["message" => "Forbidden"], 403);
+    }
+}

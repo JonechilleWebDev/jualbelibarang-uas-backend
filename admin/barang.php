@@ -4,9 +4,7 @@ require "../config/database.php";
 require "../controllers/BarangController.php";
 
 // ADMIN ONLY
-if ($currentUser['role'] !== 'admin') {
-    jsonResponse(["message" => "Access denied"], 403);
-}
+requireRole(['admin']);
 
 $db = (new Database())->connect();
 $controller = new BarangController($db);

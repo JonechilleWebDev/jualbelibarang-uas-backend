@@ -4,9 +4,7 @@ require "../config/database.php";
 require "../controllers/TransaksiController.php";
 
 // ADMIN ONLY
-if ($currentUser['role'] !== 'admin') {
-    jsonResponse(["message" => "Access denied"], 403);
-}
+requireRole(['admin']);
 
 $db = (new Database())->connect();
 $controller = new TransaksiController($db);
